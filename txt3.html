@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ctx = document.body.appendChild(document.createElement("canvas")).getContext('2d');
+    var i, j, k, a = [], w = ctx.canvas.width = 1200, h = ctx.canvas.height =600, r = Math.random, p = Math.PI;
+    setInterval(function(){
+        var grd=ctx.createRadialGradient(600,100,10,600,100,100);
+// var grd=ctx.createLinearGradient(600,0,600,600);
+        grd.addColorStop(0.0,"#feffdd");
+        grd.addColorStop(0.1,"#f5ea76");
+        grd.addColorStop(0.2,"#ea7d22");
+// grd.addColorStop(0.3,"#ffe456");
+        grd.addColorStop(0.4,"#fca442");
+// grd.addColorStop(0.5,"#9e540d");
+// grd.addColorStop(0.6,"#9c3009");
+// grd.addColorStop(0.7,"#5d0201");
+// grd.addColorStop(0.8,"#280201");
+        grd.addColorStop(0.9,"#160500");
+        grd.addColorStop(1,"#180302");
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, w, h);
+        i = 10;
+        while(i--){a.push({x:w/2,y:h/6,r:r()*3,c:"#fff",t:0,vx:r()*10-5,vy:r()*-5})}
+        for(i = a.length-1;i >= 0;i--){
+            k = a[i];
+            ctx.fillStyle=k.c;
+            ctx.beginPath();
+            ctx.arc(k.x, k.y, k.r, 0, p*2)
+            ctx.fill();
+            k.x+=k.vx;
+            k.y+=k.vy;
+            k.vy+=.2;
+            k.r -= .01;
+            if(k.y>h){k.y=h;k.vy*=-.5;k.r+=.005;}
+            k.r < 0 && a.splice(i, 1);
+        }
+    }, 100);
+</script>
+
+</body>
+</html>

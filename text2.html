@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            width: 1520px;
+            height: 1900px;
+            background-color: steelblue;
+            float: left;
+        }
+        canvas{
+            display: block;
+            width: 100%;
+            height: 100%;
+            float: left;
+        }
+       .main{
+           display: block;
+           width:100% ;
+           height: 100%;
+       }
+       .left{
+           display: block;
+           position: fixed;
+           width: 20%;
+           height: 720px;
+           background-color:white;
+       }
+       .rigth{
+           display: block;
+           margin-left: 400px;
+           width:70%;
+           height: 100%;
+           /*background-color: white;*/
+           position: absolute;
+       }
+        .header{
+            display: block;
+            width:100%;
+            height: 250px;
+
+        }
+        .cd{
+            display: block;
+            margin-left: 15px;
+            margin-top:25px;
+            width:50px;
+            height:35px;
+        }
+        .logo{
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            margin-right: 10px;
+        }
+         img{
+            width: 100%;
+            height: 100%;
+        }
+        .contain{
+            display: block;
+            width: 100%;
+        }
+
+        ul{
+            display: block;
+            width: 80%;
+            height: 200px;
+            margin: 20px;
+
+            padding-left: 0;
+            text-align: center;
+        }
+        ul li{
+            display: block;
+            height: 42px;
+            border-bottom: 1px solid rgba(0,0,0,.125);
+            list-style: none;
+            padding-left: 0;
+        }
+        a{
+            display: block;
+            color: #111;
+            padding-top: .6rem;
+            padding-bottom: .5rem;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            text-decoration: none;
+            text-align: center;
+            font-size: 19px;
+            font-family: 华文新魏;
+        }
+        h4{
+            margin-top: 40px;
+            text-align: center;
+        }
+        a:hover {
+            color: #999;
+        }
+        .line{
+            width: 45%;
+            height: 2px;
+            margin-left: 550px;
+            background-color: #111111;
+            display: block;
+        }
+        .p1{
+            display: block;
+            width: 100%;
+            height: 60px;
+            margin-left: 600px;
+        }
+        .rigth p{
+        font-size: 25px;
+        }
+        .ww{
+            width: 900px;
+            height: 300px;
+            margin-left: 30px;
+            margin-top: 20px;
+            padding: 25px;
+            /*background-color: cadetblue;*/
+        }
+        .img1{
+            float: left;
+            width: 388px;
+            height: 300px;
+            margin: 10px;
+        }
+        .yw{
+            font-size: 18px;
+            font-family: 华文新魏;
+            text-indent: 2rem;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div class="main">
+    <div class="left">
+      <div class="header">
+        <div class="logp">
+
+
+            <div class="cd">
+                <a href="#"><img src="image/cd.jpg" alt="" width="6%" height="8%"></a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="image/1.jpg" alt="" width="8%" height="8%"></a>
+
+            </div>
+            <h4>欢迎，祝快乐</h4>
+        </div>
+    </div>
+        <div class="contain">
+                <ul>
+                    <li><a href="#">时时日志</a></li>
+                    <li><a href="wc.html">完成作品</a></li>
+                    <li><a href="#">进阶之路</a></li>
+                    <li><a href="#">留言板~</a></li>
+                    <li><a href="#">联系我~</a></li>
+                </ul>
+            <img src="image/sm.jpg" alt="" width="8%" height="8%">
+        </div>
+    </div>
+    <div class="rigth">
+        <div class="p1"><h2>对未来最大的慷慨，是把一切献给现在</h2></div>
+        <div class="line"></div>
+        <P>DATE</P>
+        <div class="wz">
+            <div class="ww">
+                <div class="img1">
+                    <img src="image/xx.jpg" alt="">
+                </div>
+                <div class="yw">
+                    <p>现在是2018年12月25日圣诞节，我搭建成了我的第一个博客，虽然说过程有点艰辛，但是结果还是不错的哦嘻嘻。
+                       虽然现在还不是很好，当然我还得学习更多的东西咯
+                    </p>
+                    <p>
+                        定个小目标：1.4-3.4两个月学好C语言，刷完pat题库，考证！！！
+                    </p>
+                </div>
+            </div>
+            <div class="ww">
+                <div class="img1">
+                    <img src="image/3.jpg" alt="">
+                </div>
+                <div class="yw">
+                    <p>搭建这个首页让我发现画布的用法，但是还有各种的js不咋会啊，有大神能棒棒我不</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        class Circle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.r = Math.random() * 10 ;
+                this._mx = Math.random() ;
+                this._my = Math.random() ;
+            }
+            drawCircle(ctx) {
+                ctx.beginPath();
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(104, 104, 104, 0.3)';
+                ctx.fill();
+            }
+            drawLine(ctx, _circle) {
+                let dx = this.x - _circle.x;
+                let dy = this.y - _circle.y;
+                let d = Math.sqrt(dx * dx + dy * dy)
+                if (d < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(_circle.x, _circle.y);
+                    ctx.closePath();
+                    ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+                    ctx.stroke();
+                }
+            }
+            move(w, h) {
+                this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+                this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+                this.x += this._mx / 2;
+                this.y += this._my / 2;
+            }
+        }
+        class currentCirle extends Circle {
+
+            constructor(x, y) {
+                super(x, y)
+            }
+            drawCircle(ctx) {
+                ctx.beginPath();
+                this.r = 8;
+                ctx.arc(this.x, this.y, this.r, 0, 360);
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(255, 77, 54, 0.6)'
+                ctx.fill();
+            }
+        }
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        let w = canvas.width = canvas.offsetWidth;
+        let h = canvas.height = canvas.offsetHeight;
+        let circles = [];
+        let current_circle = new currentCirle(0, 0)
+        let draw = function () {
+            ctx.clearRect(0, 0, w, h);
+            for (let i = 0; i < circles.length; i++) {
+                circles[i].move(w, h);
+                circles[i].drawCircle(ctx);
+                for (j = i + 1; j < circles.length; j++) {
+                    circles[i].drawLine(ctx, circles[j])
+                }
+            }
+
+            if (current_circle.x) {
+                current_circle.drawCircle(ctx);
+                for (var k = 1; k < circles.length; k++) {
+                    current_circle.drawLine(ctx, circles[k])
+                }
+
+            }
+            requestAnimationFrame(draw)
+
+        }
+        let init = function (num) {
+            for (var i = 0; i < num; i++) {
+                circles.push(new Circle(Math.random() * w, Math.random() * h));
+            }
+            draw();
+        }
+        window.addEventListener('load', init(60));
+        window.onmousemove = function (e) {
+            e = e || window.event;
+            current_circle.x = e.clientX;
+            current_circle.y = e.clientY;
+        }
+        window.onmouseout = function () {
+            current_circle.x = null;
+            current_circle.y = null;
+        };
+    </script>
+</body>
+</html>
